@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommdation System</title>
+    <link href='../static/css/style.css' rel='stylesheet' type='text/css'>
+</head>
+
+
+<body>
+
+
+    <div style="margin-top: 50px">
+        <h1 style="text-align: center">Movie Recommdation System</h1>
+        <!-- Html form which will get all the values from user -->
+        <form action="{{ url_for('predict')}}" method="post">
+
+            <div style="text-align: center;justify-self: center;">
+                <input style="background-color: #fff;text-align: center" type="text" name="Movie Name"
+                    placeholder="Movie Name" required="required" /><br><br>
+                <button style="background-color: goldenrod;text-align: center" type="submit">Predict</button>
+                <button style="background-color: goldenrod;text-align: center" type="submit" onclick="goBack()">Go
+                    Back</button>
+            </div>
+            <script>
+                function goBack() {
+                    window.history.back()
+                }
+            </script>
+        </form>
+        {% if len==0 %}
+        <h5 style="color: red;">
+            Sorry! The Movie is not in our database. Pease check spelling and try again!!!
+        </h5>
+        {% else %}
+        <ul style="color: blue;">
+            {% for key in data %}
+            <li style="color: blue;">{{ key }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>
