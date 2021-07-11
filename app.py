@@ -7,3 +7,4 @@ data = pd.read_csv('model.csv')
 
 vec = CountVectorizer()
 vec_matrix = vec.fit_transform(data['combined']
+                               similarity=cosine_similarity(vec_matrix)
